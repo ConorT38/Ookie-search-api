@@ -7,8 +7,12 @@ const getSearchResults = async function (searchTerm) {
     password: "raspberry",
     database: "ookie",
   });
+  
   let [rows, fields] = await conn
-    .execute("SELECT * FROM sites WHERE title LIKE ? or url LIKE ?", ["%" + searchTerm + "%", "%" + searchTerm + "%"])
+    .execute("SELECT * FROM sites WHERE title LIKE ? or url LIKE ?", [
+      '%' + searchTerm + '%',
+      '%' + searchTerm + '%',
+    ])
     .finally(conn.end());
   return rows;
 };
