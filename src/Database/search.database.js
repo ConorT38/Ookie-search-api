@@ -11,7 +11,7 @@ const getSearchResults = async function (searchTerm) {
   let [rows, fields] = await conn
     .execute("SELECT * FROM sites WHERE title LIKE ? or url LIKE ?", [
       '%' + searchTerm + '%',
-      '%' + searchTerm + '%',
+      '%' + searchTerm + '%'
     ])
     .finally(conn.end());
   return rows;
